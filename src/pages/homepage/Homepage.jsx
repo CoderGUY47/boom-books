@@ -1,9 +1,12 @@
 import React from 'react'
+import Hero from '../../components/homepage/hero'
+import AllBooks from '../../components/homepage/AllBooks'
 
 const Homepage = () => {
   return (
     <div>
-        <h1>Homepage</h1>
+        <Hero />
+        <AllBooks />
     </div>
   )
 }

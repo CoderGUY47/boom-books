@@ -1,51 +1,78 @@
-import React from 'react'
+import { Menu } from "lucide-react";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <>
-        <div className="navbar bg-base-100">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-      </div>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Item 1</a></li>
-        <li>
-          <details>
-            <summary>Parent</summary>
-            <ul className="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </details>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
-    </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2 bg-base-100 w-40 z-10">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
-  </div>
-</div>
-    </>
-  )
-}
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "text-green-400 bg-green-500/10 border border-green-500/30 font-semibold tracking-wide rounded-xl px-4 py-2 !shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all duration-300"
+      : "text-gray-300 hover:text-white hover:bg-white/5 font-medium tracking-wide rounded-xl px-4 py-2 border border-transparent transition-all duration-300";
 
-export default Navbar
+  const links = (
+    <>
+      <li className="my-1 lg:my-0">
+        <NavLink to={"/"} className={linkClass}>
+          Home
+        </NavLink>
+      </li>
+      <li className="my-1 lg:my-0">
+        <NavLink to={"/books"} className={linkClass}>
+          Listed Books
+        </NavLink>
+      </li>
+      <li className="my-1 lg:my-0">
+        <NavLink to={"/pages-to-read"} className={linkClass}>
+          Pages to Read
+        </NavLink>
+      </li>
+    </>
+  );
+
+  return (
+    <div className="sticky top-0 z-50 w-full flex justify-center py-6 px-4">
+      <div className="navbar container mx-auto w-full lg:w-[67%] bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] px-4 py-2">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle text-white lg:hidden hover:bg-white/10">
+                <Menu className="w-6 h-6" />
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/10 rounded-[1.5rem] mt-4 w-60 p-3 shadow-2xl gap-2 z-50"
+            >
+              {links}
+            </ul>
+          </div>
+          <Link to={'/'} className="hidden lg:flex items-center ml-2">
+            <img src="/assets/logo.png" className="w-20 drop-shadow-white drop-shadow-md" alt="Boom Books Logo" />
+          </Link>
+        </div>
+        
+        <div className="navbar-center lg:hidden">
+          <Link to={'/'} className="flex items-center drop-shadow-lg">
+            <img src="/assets/logo.png" className="w-20 h-auto" alt="Boom Books Logo" />
+          </Link>
+        </div>
+
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-2 gap-2">
+            {links}
+          </ul>
+        </div>
+        
+        <div className="navbar-end pr-2">
+          <div className="flex gap-3">
+            <button className="btn border-none bg-white/5 text-gray-300 hover:text-white font-medium tracking-wide hover:bg-white/10 transition-all duration-300 rounded-2xl px-6 hidden sm:flex">
+              Login
+            </button>
+            <button className="btn border-none bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold tracking-wide rounded-2xl px-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

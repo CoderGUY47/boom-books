@@ -5,7 +5,7 @@ import '../App.css'
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className='min-h-screen relative overflow-hidden'>
         <Navbar />
         <Outlet/>
     </div>
