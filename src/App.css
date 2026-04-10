@@ -1,7 +1,2 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
-
-body{
-    font-family: 'Questrial', sans-serif;
-}

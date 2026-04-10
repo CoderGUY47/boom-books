@@ -5,8 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   const linkClass = ({ isActive }) =>
     isActive
-      ? "text-green-400 bg-green-500/10 border border-green-500/30 font-semibold tracking-wide rounded-xl px-4 py-2 !shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all duration-300"
-      : "text-gray-300 hover:text-white hover:bg-white/5 font-medium tracking-wide rounded-xl px-4 py-2 border border-transparent transition-all duration-300";
+      ? "text-green-400 bg-green-500/10 border border-green-500/30 font-semibold tracking-wide rounded-full px-4 py-2 transition-all duration-300"
+      : "text-gray-300 hover:text-white hover:bg-white/5 font-medium tracking-wide rounded-full px-4 py-2 border border-transparent transition-all duration-300";
 
   const links = (
     <>
@@ -38,19 +38,19 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/10 rounded-[1.5rem] mt-4 w-60 p-3 shadow-2xl gap-2 z-50"
+              className="menu menu-sm dropdown-content bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/10 rounded-full mt-4 w-60 p-3 shadow-2xl gap-2 z-50"
             >
               {links}
             </ul>
           </div>
           <Link to={'/'} className="hidden lg:flex items-center ml-2">
-            <img src="/assets/logo.png" className="w-20 drop-shadow-white drop-shadow-md" alt="Boom Books Logo" />
+            <img src="/assets/book.png" className="w-10 h-auto" alt="Boom Books Logo" />
           </Link>
         </div>
         
         <div className="navbar-center lg:hidden">
           <Link to={'/'} className="flex items-center drop-shadow-lg">
-            <img src="/assets/logo.png" className="w-20 h-auto" alt="Boom Books Logo" />
+            <img src="/assets/book.png" className="w-10 h-auto" alt="Boom Books Logo" />
           </Link>
         </div>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
             <button className="btn border-none bg-white/5 text-gray-300 hover:text-white font-medium tracking-wide hover:bg-white/10 transition-all duration-300 rounded-2xl px-6 hidden sm:flex">
               Login
             </button>
-            <button className="btn border-none bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold tracking-wide rounded-2xl px-6 shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300">
+            <button className="btn border-none bg-linear-to-r from-green-500 to-emerald-600 text-white font-semibold tracking-wide rounded-2xl px-6 transition-all duration-300">
               Register
             </button>
           </div>

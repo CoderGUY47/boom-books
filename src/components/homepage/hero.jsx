@@ -22,7 +22,7 @@ const hero = () => {
           </div>
 
           <div className='space-y-7 w-full lg:w-1/2'>
-            <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-black tracking-tight text-white leading-[1.1]">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.1]">
               Fresh Reads, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 filter drop-shadow-[0_0_20px_rgba(52,211,153,0.3)]">Fresh Minds</span> <br />
               with Boom Books
