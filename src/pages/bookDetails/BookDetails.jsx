@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
 import { Link } from "react-router";
 import { ArrowLeft, BookOpen, Bookmark } from "lucide-react";
 import Badge from "../../components/ui/badge";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { BookContext } from "../../context/BookContext";
+
 
 const BookDetails = () => {
   const { bookId } = useParams();
   const books = useLoaderData();
   const expectedBook = books.find((book) => book.bookId == bookId);
+
+
+  const {handleMarkasRead, storedBooks, handleWishlist, wishlistBooks} = useContext(BookContext)
+  console.log(handleMarkasRead, storedBooks, handleWishlist, wishlistBooks, "bookContext")
 
   if (!expectedBook) {
     return (
@@ -17,9 +25,11 @@ const BookDetails = () => {
     );
   }
 
+
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white px-4 py-10">
-      <div className="max-w-5xl mx-auto">
+      <div className="container w-[67%] mx-auto">
 
         {/* Back Link */}
         <Link
@@ -97,11 +107,15 @@ const BookDetails = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-3">
-              <button className="flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-green-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200">
+              <button 
+              onClick={() => handleMarkasRead(expectedBook)}
+              className="flex items-center gap-2 px-6 py-2.5 border border-white/20 hover:border-green-400 text-white text-sm font-semibold rounded-lg transition-colors duration-200">
                 <BookOpen size={15} />
                 Read
               </button>
-              <button className="flex items-center gap-2 px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200">
+              <button 
+              onClick={() => handleWishlist(expectedBook)}
+              className="flex items-center gap-2 px-6 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200">
                 <Bookmark size={15} />
                 Wishlist
               </button>
@@ -110,6 +124,7 @@ const BookDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={3000} theme="dark" />
     </div>
   );
 };
