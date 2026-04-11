@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { BookContext } from '../../context/BookContext';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import StoredReadList from '../../components/listedBooks/StoredReadList';
@@ -6,7 +6,9 @@ import StoredWishList from '../../components/listedBooks/StoredWishList';
 import { ChevronDown } from 'lucide-react';
 
 const Books = () => {
-  const { storedBooks, wishlistBooks } = useContext(BookContext);
+  const [sortBy, setSortBy] = useState("");
+  console.log(sortBy, "sort by");
+  // const { storedBooks, wishlistBooks } = useContext(BookContext);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white pt-10 pb-20">
@@ -24,9 +26,8 @@ const Books = () => {
               Sort By <ChevronDown size={18} />
             </div>
             <ul tabIndex={0} className="dropdown-content z-1 top-12 menu p-2 shadow-2xl bg-[#1a1a1a] border border-white/10 rounded-xl w-52 text-gray-300">
-              <li><a className="hover:bg-green-500 hover:text-white rounded-lg">Rating</a></li>
-              <li><a className="hover:bg-green-500 hover:text-white rounded-lg">Number of pages</a></li>
-              <li><a className="hover:bg-green-500 hover:text-white rounded-lg">Publisher year</a></li>
+              <li onClick={() => setSortBy("rating")}><a className="hover:bg-green-500 hover:text-white rounded-lg">Rating</a></li>
+              <li onClick={() => setSortBy("pages")}><a className="hover:bg-green-500 hover:text-white rounded-lg">Pages</a></li>
             </ul>
           </div>
         </div>
@@ -43,10 +44,10 @@ const Books = () => {
           </TabList>
 
           <TabPanel>
-            <StoredReadList />
+            <StoredReadList sortBy={sortBy}/>
           </TabPanel>
           <TabPanel>
-            <StoredWishList />
+            <StoredWishList sortBy={sortBy}/>
           </TabPanel>
         </Tabs>
       </div>

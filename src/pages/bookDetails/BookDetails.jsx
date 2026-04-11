@@ -27,6 +27,7 @@ const BookDetails = () => {
 
 
 
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white px-4 py-10">
       <div className="container w-[67%] mx-auto">
